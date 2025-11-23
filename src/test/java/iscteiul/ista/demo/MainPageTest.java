@@ -1,17 +1,22 @@
 package iscteiul.ista.demo;
+
 import org.junit.jupiter.api.*;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import java.time.Duration;
 
 public class MainPageTest {
     private WebDriver driver;
     private MainPage mainPage;
 
-@BeforeEach    public void setUp() {
+    @BeforeEach
+    public void setUp() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -20,7 +25,8 @@ public class MainPageTest {
         mainPage = new MainPage(driver);
     }
 
-@AfterEach    public void tearDown() {
+    @AfterEach
+    public void tearDown() {
         driver.quit();
     }
 
@@ -35,7 +41,8 @@ public class MainPageTest {
         submitButton.click();
 
         WebElement searchPageField = driver.findElement(By.cssSelector("input[data-test='search-input']"));
-assertEquals("Selenium", searchPageField.getAttribute("value"));    }
+        assertEquals("Selenium", searchPageField.getAttribute("value"));
+    }
 
     @Test
     public void toolsMenu() {
@@ -52,5 +59,6 @@ assertEquals("Selenium", searchPageField.getAttribute("value"));    }
 
         WebElement productsList = driver.findElement(By.id("products-page"));
         assertTrue(productsList.isDisplayed());
-assertEquals("All Developer Tools and Products by JetBrains", driver.getTitle());    }
+        assertEquals("All Developer Tools and Products by JetBrains", driver.getTitle());
+    }
 }
