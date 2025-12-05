@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","14053","testImdbLinksAndTitles()","","2025-12-04","broken","2025-12-04","","TestSuite3_movieinfo.VaadinDatabaseMovieInfoTests","TestSuite3_movieinfo.VaadinDatabaseMovieInfoTests","testImdbLinksAndTitles"
+"","13865","testClickImdbLinkInFirstRow()","","2025-12-04","broken","2025-12-04","","TestSuite3_movieinfo.VaadinDatabaseMovieInfoTests","TestSuite3_movieinfo.VaadinDatabaseMovieInfoTests","testClickImdbLinkInFirstRow"
+"","6670","testClickImdbLink()","","2025-12-04","passed","2025-12-04","","TestSuite3_movieinfo.VaadinDatabaseMovieInfoTests","TestSuite3_movieinfo.VaadinDatabaseMovieInfoTests","testClickImdbLink"
+"","15931","testAddNewEntry()","","2025-12-04","broken","2025-12-04","","TestSuite3_movieinfo.VaadinDatabaseMovieInfoTests","TestSuite3_movieinfo.VaadinDatabaseMovieInfoTests","testAddNewEntry"
+"","2873","testImdbLinkHref()","","2025-12-04","passed","2025-12-04","","TestSuite3_movieinfo.VaadinDatabaseMovieInfoTests","TestSuite3_movieinfo.VaadinDatabaseMovieInfoTests","testImdbLinkHref"
+"","5424","testImdbLinkIsDisplayed()","","2025-12-04","passed","2025-12-04","","TestSuite3_movieinfo.VaadinDatabaseMovieInfoTests","TestSuite3_movieinfo.VaadinDatabaseMovieInfoTests","testImdbLinkIsDisplayed"
