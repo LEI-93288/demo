@@ -1,19 +1,20 @@
 package iscteiul.ista.demo;
 
-import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import java.time.Duration;
 
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MainPageTest {
+
     private WebDriver driver;
     private MainPage mainPage;
 
@@ -24,26 +25,27 @@ public class MainPageTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://www.jetbrains.com/");
 
-        clickCookieBannerIfVisible();
         mainPage = new MainPage(driver);
     }
 
     @AfterEach
     public void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     @Test
     public void search() {
         mainPage.searchButton.click();
 
-        WebElement searchField = driver.findElement(By.cssSelector("input[data-test$='inner']"));
+        WebElement searchField = driver.findElement(By.cssSelector("[data-test='search-input']"));
         searchField.sendKeys("Selenium");
 
-        WebElement submitButton = driver.findElement(By.cssSelector("button[data-test='full-search-button'] span[data-test='button__content']"));
+        WebElement submitButton = driver.findElement(By.cssSelector("button[data-test='full-search-button']"));
         submitButton.click();
 
-        WebElement searchPageField = driver.findElement(By.cssSelector("input[data-test$='inner']"));
+        WebElement searchPageField = driver.findElement(By.cssSelector("input[data-test='search-input']"));
         assertEquals("Selenium", searchPageField.getAttribute("value"));
     }
 
@@ -51,8 +53,7 @@ public class MainPageTest {
     public void toolsMenu() {
         mainPage.toolsMenu.click();
 
-        WebElement menuPopup = driver.findElement(By.cssSelector("html > body > div:nth-of-type(2) > div:nth-of-type(1) > " +
-                "div:nth-of-type(3) > header > div > div > div:nth-of-type(2) > div:nth-of-type(1) > div > nav > div:nth-of-type(2) > div"));
+        WebElement menuPopup = driver.findElement(By.cssSelector("div[data-test='main-submenu']"));
         assertTrue(menuPopup.isDisplayed());
     }
 
@@ -65,19 +66,4 @@ public class MainPageTest {
         assertTrue(productsList.isDisplayed());
         assertEquals("All Developer Tools and Products by JetBrains", driver.getTitle());
     }
-
-    private void clickCookieBannerIfVisible() {
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(7));
-            WebElement cookieAcceptBtn = wait.until(
-                    ExpectedConditions.elementToBeClickable(
-                            By.cssSelector("button.ch2-btn.ch2-allow-all-btn.ch2-btn-primary")
-                    )
-            );
-            cookieAcceptBtn.click();
-        } catch (Exception ignored) {
-            // Cookie banner not present or not clickable; continue test flow
-        }
-    }
-
 }
