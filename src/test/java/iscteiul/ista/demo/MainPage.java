@@ -5,28 +5,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+// page_url = https://www.jetbrains.com/
 public class MainPage {
-
-    private WebDriver driver;
-
-    // Botão de pesquisa no site JetBrains
-    @FindBy(css = "[data-test='search-button']")
-    public WebElement searchButton;
-
-    // Menu Tools
-    @FindBy(css = "[data-test='main-menu-tools']")
-    public WebElement toolsMenu;
-
-    // Botões de navegação dentro do site
-    @FindBy(css = "[data-test='see-developer-tools-button']")
+    @FindBy(xpath = "//*[@data-test-marker='Developer Tools']")
     public WebElement seeDeveloperToolsButton;
 
-    @FindBy(css = "[data-test='find-your-tools-button']")
+    @FindBy(xpath = "//*[@data-test='main-submenu-suggestions']")
     public WebElement findYourToolsButton;
 
-    // Construtor
+    @FindBy(xpath = "//div[@data-test='main-menu-item' and @data-test-marker = 'Developer Tools']")
+    public WebElement toolsMenu;
+
+    @FindBy(css = "[data-test='site-header-search-action']")
+    public WebElement searchButton;
+
     public MainPage(WebDriver driver) {
-        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 }
